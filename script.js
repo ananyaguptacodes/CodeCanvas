@@ -76,7 +76,7 @@ const sampleProjects = [
     hasDemo: true,
     hasReadme: true,
     previewImage: "assets/image.png",
-    tags: ["REACT", "Tailwind CSS", "Responsive", "React-Router DOM"]
+    tags: ["React", "Tailwind CSS", "Responsive", "React-Router DOM"]
   }
 ];
 
@@ -342,7 +342,7 @@ function resetFilters() {
   renderProjects(sampleProjects);
 }
 
-// Form validation with improved version
+// Form validation
 function validateForm() {
   const name = document.getElementById("name").value.trim();
   const lastname = document.getElementById("lastname").value.trim();
