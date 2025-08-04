@@ -342,13 +342,14 @@ function resetFilters() {
   renderProjects(sampleProjects);
 }
 
-// Form validation
+// Form validation with improved version
 function validateForm() {
   const name = document.getElementById("name").value.trim();
+  const lastname = document.getElementById("lastname").value.trim();
   const email = document.getElementById("email").value.trim();
   const message = document.getElementById("message").value.trim();
-
-  if (!name || !email || !message) {
+  
+  if (!name || !lastname || !email || !message) {
     alert("Please fill in all fields.");
     return false;
   }
@@ -359,8 +360,21 @@ function validateForm() {
     return false;
   }
 
-  document.getElementById("form-status").style.display = "block";
-  return false; // Prevent actual submission
+  // Show the overlay
+  const overlay = document.getElementById("message-overlay");
+  overlay.style.opacity = "1";
+  overlay.style.pointerEvents = "auto";
+
+  // Hide the overlay after 3 seconds
+  setTimeout(() => {
+    overlay.style.opacity = "0";
+    overlay.style.pointerEvents = "none";
+  }, 3000);
+
+  // Clear form
+  document.getElementById("contact-form").reset();
+
+  return false; // Prevent actual form submission
 }
 
 // Make handleUpvote globally available
