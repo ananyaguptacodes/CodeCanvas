@@ -44,13 +44,13 @@ const sampleProjects = [
     id: 4,
     title: 'Portfolio Website',
     description: 'A modern, responsive portfolio website with smooth animations, dark mode toggle, and optimized performance. Great starting point for personal branding.',
-    repoUrl: 'https://github.com/example/portfolio',
-    demoUrl: 'https://example.github.io/portfolio/',
+    repoUrl: 'https://github.com/Nsanjayboruds/Template-hub',
+    demoUrl: 'https://templateshub.netlify.app/',
     difficulty: 'beginner',
     upvotes: 31,
     hasDemo: true,
     hasReadme: true,
-    previewImage: null,
+    previewImage: 'assets/templates.png',
     tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
   },
   {
