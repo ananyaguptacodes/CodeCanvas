@@ -1,152 +1,250 @@
-// This data in future contribution should be done using Firebase
+// ================= Project Data =================
 const sampleProjects = [
   {
     id: 1,
-    title: "Analog Clock Web App",
-    description: "A beautifully designed analog clock that updates in real-time using vanilla JavaScript, HTML, and CSS. Perfect for understanding basic DOM manipulation and CSS transformations.",
-    repoUrl: "https://github.com/Varshitha713/analog-clock-web-app",
-    demoUrl: "https://varshitha713.github.io/analog-clock-web-app/",
-    difficulty: "beginner",
+    title: 'Analog Clock Web App',
+    description: 'A beautifully designed analog clock that updates in real-time using vanilla JavaScript, HTML, and CSS.',
+    repoUrl: 'https://github.com/snehhhcodes/Analog-Clock-Web-App',
+    demoUrl: 'https://snehhhcodes.github.io/Analog-Clock-Web-App/',
+    difficulty: 'beginner',
     upvotes: 15,
     hasDemo: true,
     hasReadme: true,
-    previewImage: "https://github.com/user-attachments/assets/091946a3-d98d-42dc-a22a-90eaefc8b1b1",
-    tags: ["JavaScript", "CSS", "HTML", "DOM"]
+    previewImage: 'assets/Preview.png',
+    tags: ['JavaScript', 'CSS', 'HTML', 'DOM']
   },
   {
     id: 2,
-    title: "Weather Dashboard",
-    description: "A responsive weather application with beautiful animations and detailed forecasts. Features location-based weather data and interactive charts.",
-    repoUrl: "https://github.com/example/weather-dashboard",
-    demoUrl: "https://example.github.io/weather-dashboard/",
-    difficulty: "intermediate",
+    title: 'Weather Dashboard',
+    description: 'A responsive weather application with beautiful animations and detailed forecasts.',
+    repoUrl: 'https://github.com/Shivin1016/weatherApp',
+    demoUrl: 'https://shivin1016.github.io/weatherApp/',
+    difficulty: 'intermediate',
     upvotes: 28,
     hasDemo: true,
     hasReadme: true,
-    previewImage: null,
-    tags: ["React", "API", "Charts", "Responsive"]
+    previewImage: "assets/weatherPreview.png",
+    tags: ['JavaScript','HTML', 'CSS', "API"]
   },
   {
     id: 3,
-    title: "Task Management App",
-    description: "A full-featured task management application with drag-and-drop functionality, real-time updates, and team collaboration features.",
-    repoUrl: "https://github.com/example/task-manager",
+    title: 'Task Management App',
+    description: 'A full-featured task management app with drag-and-drop functionality and team collaboration.',
+    repoUrl: 'https://github.com/example/task-manager',
     demoUrl: null,
-    difficulty: "advanced",
+    difficulty: 'advanced',
     upvotes: 42,
     hasDemo: false,
     hasReadme: true,
     previewImage: null,
-    tags: ["Vue.js", "Drag & Drop", "WebSocket", "PWA"]
+    tags: ['Vue.js', 'Drag & Drop', 'WebSocket', 'PWA']
   },
   {
     id: 4,
-    title: "Portfolio Website",
-    description: "A modern, responsive portfolio website with smooth animations, dark mode toggle, and optimized performance. Great starting point for personal branding.",
-    repoUrl: "https://github.com/example/portfolio",
-    demoUrl: "https://example.github.io/portfolio/",
-    difficulty: "beginner",
+    title: 'Portfolio Website',
+    description: 'A modern, responsive portfolio website with smooth animations and dark mode toggle.',
+    repoUrl: 'https://github.com/example/portfolio',
+    demoUrl: 'https://example.github.io/portfolio/',
+    difficulty: 'beginner',
     upvotes: 31,
     hasDemo: true,
     hasReadme: true,
     previewImage: null,
-    tags: ["HTML", "CSS", "JavaScript", "Responsive"]
+    tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
   },
   {
     id: 5,
-    title: "Expense Tracker App",
-    description: "A simple and intuitive expense tracker app to monitor daily spending, manage budgets, and gain financial insights.",
-    repoUrl: "https://github.com/DineshPabboju/Expense-Tracker-App",
-    demoUrl: "https://expense-tracker-app-04.netlify.app/",
-    difficulty: "intermediate",
+    title: 'Expense Tracker App',
+    description: 'A simple and intuitive expense tracker app to monitor daily spending and budgets.',
+    repoUrl: 'https://github.com/DineshPabboju/Expense-Tracker-App',
+    demoUrl: 'https://expense-tracker-app-04.netlify.app/',
+    difficulty: 'intermediate',
     upvotes: 21,
     hasDemo: true,
     hasReadme: false,
-    previewImage: "assets/Expense-Tracker-Preview.png",
-    tags: ["HTML", "CSS", "JavaScript", "Responsive"]
+    previewImage: 'assets/Expense-Tracker-Preview.png',
+    tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
   },
   {
     id: 6,
-    title: "IMDb Clone",
-    description: "A responsive IMDb clone showcasing popular movies with detailed info using TMDb API and modern frontend technologies.",
-    repoUrl: "https://github.com/Jils31/IMDB-clone",
-    demoUrl: "https://imdb-clone-seven-virid.vercel.app/",
-    difficulty: "intermediate",
+    title: 'IMDb Clone',
+    description: 'A responsive IMDb clone showcasing popular movies with TMDb API.',
+    repoUrl: 'https://github.com/Jils31/IMDB-clone',
+    demoUrl: 'https://imdb-clone-seven-virid.vercel.app/',
+    difficulty: 'intermediate',
     upvotes: 21,
     hasDemo: true,
     hasReadme: true,
-    previewImage: "assets/image.png",
-    tags: ["React", "Tailwind CSS", "Responsive", "React-Router DOM"]
+    previewImage: 'assets/image.png',
+    tags: ['React', 'Tailwind CSS', 'Responsive', 'React-Router DOM']
+  },
+  {
+    id: 7,
+    title: 'Password Generator',
+    description: 'Generates secure passwords with customizable options.',
+    repoUrl: 'https://github.com/Sitaram8472/Generate-password',
+    demoUrl: 'https://password-generator021.netlify.app/',
+    difficulty: 'advanced',
+    upvotes: 42,
+    hasDemo: true,
+    hasReadme: true,
+    previewImage: 'assets/GeneratePassword.png',
+    tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
   }
 ];
 
-// Store the current projects array
+// ================= Voting System =================
 let currentProjects = [...sampleProjects];
+let selectedTag = null;
 
-// DOM elements
-const projectsContainer = document.getElementById("projects-container");
-const loadingElement = document.getElementById("loading");
-const emptyStateElement = document.getElementById("empty-state");
-const difficultyFilter = document.getElementById("difficulty");
-const hasDemoFilter = document.getElementById("has-demo");
-const hasReadmeFilter = document.getElementById("has-readme");
-const applyFiltersBtn = document.getElementById("apply-filters");
-const resetFiltersBtn = document.getElementById("reset-filters");
-const searchInput = document.getElementById("search-input");
-const clearSearchBtn = document.getElementById("clear-search");
+class VotingSystem {
+  constructor() {
+    this.userFingerprint = this.generateUserFingerprint();
+    this.votes = this.loadVotes();
+    this.initializeProjectVotes();
+  }
 
-// Initialize the app
+  generateUserFingerprint() {
+    let fingerprint = localStorage.getItem('userFingerprint');
+    if (!fingerprint) {
+      fingerprint = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+      localStorage.setItem('userFingerprint', fingerprint);
+    }
+    return fingerprint;
+  }
+
+  loadVotes() {
+    const savedVotes = localStorage.getItem('projectVotes');
+    return savedVotes ? JSON.parse(savedVotes) : {};
+  }
+
+  saveVotes() {
+    localStorage.setItem('projectVotes', JSON.stringify(this.votes));
+  }
+
+  initializeProjectVotes() {
+    sampleProjects.forEach(project => {
+      if (!this.votes[project.id]) {
+        this.votes[project.id] = {
+          count: project.upvotes || 0,
+          voters: []
+        };
+      }
+    });
+    this.saveVotes();
+  }
+
+  canUserVote(projectId) {
+    const projectVotes = this.votes[projectId];
+    return projectVotes && !projectVotes.voters.includes(this.userFingerprint);
+  }
+
+  upvoteProject(projectId) {
+    if (!this.canUserVote(projectId)) {
+      return { success: false, message: 'You have already voted for this project!' };
+    }
+
+    this.votes[projectId].count++;
+    this.votes[projectId].voters.push(this.userFingerprint);
+    this.saveVotes();
+
+    const project = currentProjects.find(p => p.id === projectId);
+    if (project) {
+      project.upvotes = this.votes[projectId].count;
+    }
+
+    return { success: true, newCount: this.votes[projectId].count };
+  }
+
+  getProjectVotes(projectId) {
+    return this.votes[projectId] ? this.votes[projectId].count : 0;
+  }
+
+  hasUserVoted(projectId) {
+    const projectVotes = this.votes[projectId];
+    return projectVotes && projectVotes.voters.includes(this.userFingerprint);
+  }
+}
+const votingSystem = new VotingSystem();
+
+// ================= DOM Elements =================
+const projectsContainer = document.getElementById('projects-container');
+const loadingElement = document.getElementById('loading');
+const emptyStateElement = document.getElementById('empty-state');
+const sortByFilter = document.getElementById('sort-by');
+const difficultyFilter = document.getElementById('difficulty');
+const hasDemoFilter = document.getElementById('has-demo');
+const applyFiltersBtn = document.getElementById('apply-filters');
+const resetFiltersBtn = document.getElementById('reset-filters');
+const searchInput = document.getElementById('search-input');
+const clearSearchBtn = document.getElementById('clear-search');
+const tagFiltersContainer = document.querySelector('.tag-filters');
+
+// ================= Tag Filter Buttons =================
+const allTagSet = new Set();
+sampleProjects.forEach(project => {
+  project.tags.forEach(tag => allTagSet.add(tag));
+});
+const uniqueTags = Array.from(allTagSet);
+
+uniqueTags.forEach(tag => {
+  const button = document.createElement('button');
+  button.textContent = tag;
+  button.classList.add('tag-filter-btn');
+  button.dataset.tag = tag;
+  tagFiltersContainer.appendChild(button);
+});
+
+// ================= Init =================
 function init() {
   setTimeout(() => {
     hideLoading();
     renderProjects(currentProjects);
     setupEventListeners();
-    setupNavigation();
-    setupDarkMode();
-  }, 1000); // Simulate loading time
+    initializeTagFilterListener();
+    setupNavigation();   // hamburger menu
+    setupDarkMode();     // dark mode toggle
+  }, 1000);
 }
 
-// Hide loading spinner
+// ================= UI Helpers =================
 function hideLoading() {
-  loadingElement.style.display = "none";
-  projectsContainer.style.display = "grid";
+  loadingElement.style.display = 'none';
+  projectsContainer.style.display = 'grid';
 }
 
-// Setup event listeners
-function setupEventListeners() {
-  applyFiltersBtn.addEventListener("click", applyFilters);
-  resetFiltersBtn.addEventListener("click", resetFilters);
-  
-  // Search functionality
-  searchInput.addEventListener("input", handleSearch);
-  clearSearchBtn.addEventListener("click", clearSearch);
-  
-  // Smooth scroll for explore button
-  document.querySelector('a[href="#projects"]').addEventListener("click", (e) => {
-    e.preventDefault();
-    document.getElementById("projects").scrollIntoView({
-      behavior: "smooth"
-    });
-  });
+function showNotification(message, type = 'info') {
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  notification.textContent = message;
+  document.body.appendChild(notification);
+
+  setTimeout(() => {
+    notification.classList.add('show');
+  }, 10);
+
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => notification.remove(), 300);
+  }, 3000);
 }
 
-// Setup navigation
+// ================= Navigation (Hamburger) =================
 function setupNavigation() {
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("navMenu");
   const navContainer = document.getElementById("navContainer");
 
+  if (!hamburger || !navMenu || !navContainer) return;
+
   hamburger.addEventListener("click", () => {
     navContainer.classList.toggle("active");
     navMenu.classList.toggle("nav-active");
     hamburger.classList.toggle("open");
-
-    // Toggle aria-expanded for accessibility
     const isExpanded = hamburger.getAttribute("aria-expanded") === "true";
     hamburger.setAttribute("aria-expanded", !isExpanded);
   });
 
-  // Close menu when clicking on a nav link
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", () => {
       navContainer.classList.remove("active");
@@ -157,228 +255,175 @@ function setupNavigation() {
   });
 }
 
-// Setup dark mode
+// ================= Dark Mode =================
 function setupDarkMode() {
   const toggle = document.getElementById("darkModeToggle");
   const body = document.body;
   const icon = document.getElementById("themeIcon");
 
-  // Load preference
+  if (!toggle || !icon) return;
+
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") {
     body.classList.add("dark-theme");
-    icon.textContent = "☀️"; // Sun in dark mode
+    icon.textContent = "☀️";
   } else {
-    icon.textContent = "🌙"; // Moon in light mode
+    icon.textContent = "🌙";
   }
 
   toggle.addEventListener("click", () => {
     body.classList.toggle("dark-theme");
     const theme = body.classList.contains("dark-theme") ? "dark" : "light";
     localStorage.setItem("theme", theme);
-
-    // Update icon
     icon.textContent = theme === "dark" ? "☀️" : "🌙";
   });
 }
 
-// Render projects
+// ================= Rendering Projects =================
 function renderProjects(projects) {
+  projectsContainer.innerHTML = '';
+
   if (projects.length === 0) {
-    projectsContainer.style.display = "none";
-    emptyStateElement.style.display = "block";
+    emptyStateElement.style.display = 'block';
     return;
+  } else {
+    emptyStateElement.style.display = 'none';
   }
 
-  emptyStateElement.style.display = "none";
-  projectsContainer.style.display = "grid";
-  
-  projectsContainer.innerHTML = projects.map(project => `
-    <div class="project-card">
-      ${
-        project.previewImage
-          ? `<img src="${project.previewImage}" alt="${project.title}" class="project-image" 
-               onerror="this.outerHTML='<div class=\\'project-placeholder\\'>No Preview Available</div>'">`
-          : '<div class="project-placeholder">No Preview Available</div>'
-      }
-      
-      <div class="project-header">
-        <h3 class="project-title">${project.title}</h3>
-        <a href="${project.repoUrl}" target="_blank" rel="noopener noreferrer" class="repo-link">
-          <i class="fab fa-github"></i>
-        </a>
+  projects.forEach(project => {
+    const projectCard = document.createElement('div');
+    projectCard.className = 'project-card fade-in';
+
+    projectCard.innerHTML = `
+      ${project.previewImage ? `<img src="${project.previewImage}" alt="${project.title}" class="project-preview">` : ""}
+      <h3>${project.title}</h3>
+      <p>${project.description}</p>
+      <div class="project-tags">
+        ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
       </div>
-      
-      <span class="difficulty-badge difficulty-${project.difficulty}">
-        ${project.difficulty.charAt(0).toUpperCase() + project.difficulty.slice(1)}
-      </span>
-      
-      <p class="project-description">${project.description}</p>
-      
+      <div class="project-actions">
+        <a href="${project.repoUrl}" target="_blank" class="btn">Repo</a>
+        ${project.demoUrl ? `<a href="${project.demoUrl}" target="_blank" class="btn">Demo</a>` : ""}
+      </div>
       <div class="project-meta">
-        ${
-          project.hasDemo
-            ? '<i class="fas fa-external-link-alt meta-icon"></i> Live Demo Available'
-            : '<i class="fas fa-code meta-icon"></i> Code Only'
-        }
-        ${
-          project.hasReadme
-            ? ' • <i class="fas fa-file-alt meta-icon"></i> README Included'
-            : ' • <i class="fas fa-exclamation-triangle meta-icon"></i> No README'
-        }
-      </div>
-      
-      <div class="upvote-section">
-        ${
-          project.hasDemo && project.demoUrl
-            ? `<a href="${project.demoUrl}" target="_blank" class="btn-primary" style="text-decoration: none; padding: 0.5rem 1rem; font-size: 0.875rem;">
-                <i class="fas fa-external-link-alt"></i> View Demo
-               </a>`
-            : "<span></span>"
-        }
-        <button class="upvote-btn" onclick="handleUpvote(${project.id})">
-          <i class="fas fa-arrow-up"></i>
-          <span>${project.upvotes}</span>
+        <span class="difficulty">${project.difficulty}</span>
+        <button class="upvote-btn ${votingSystem.hasUserVoted(project.id) ? 'voted' : ''}" data-id="${project.id}">
+          👍 <span class="count">${votingSystem.getProjectVotes(project.id)}</span>
         </button>
       </div>
-    </div>
-  `).join("");
+    `;
+
+    projectsContainer.appendChild(projectCard);
+  });
+
+  setupUpvoteListeners();
 }
 
-// Handle upvote
-function handleUpvote(projectId) {
-  const project = currentProjects.find(p => p.id === projectId);
-  if (project) {
-    project.upvotes++;
-    // Re-render projects to update the upvote count
-    renderProjects(applyCurrentFilters());
-    
-    // Add visual feedback
-    const button = event.target.closest(".upvote-btn");
-    button.style.transform = "scale(1.1)";
-    setTimeout(() => {
-      button.style.transform = "scale(1)";
-    }, 150);
-  }
-}
+// ================= Upvote Handling =================
+function setupUpvoteListeners() {
+  document.querySelectorAll('.upvote-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const projectId = parseInt(button.dataset.id);
+      const result = votingSystem.upvoteProject(projectId);
 
-// Apply filters
-function applyFilters() {
-  const filteredProjects = applyCurrentFilters();
-  renderProjects(filteredProjects);
-}
-
-// Apply current filter settings
-function applyCurrentFilters() {
-  let filtered = [...sampleProjects];
-
-  const difficulty = difficultyFilter.value;
-  const needsDemo = hasDemoFilter.checked;
-  const needsReadme = hasReadmeFilter.checked;
-  const searchTerm = searchInput.value.toLowerCase().trim();
-
-  // Apply search filter
-  if (searchTerm) {
-    filtered = filtered.filter(project => {
-      const titleMatch = project.title.toLowerCase().includes(searchTerm);
-      const descriptionMatch = project.description.toLowerCase().includes(searchTerm);
-      const tagsMatch = project.tags.some(tag => tag.toLowerCase().includes(searchTerm));
-      return titleMatch || descriptionMatch || tagsMatch;
+      if (result.success) {
+        button.querySelector('.count').textContent = result.newCount;
+        button.classList.add('voted');
+        showNotification('Thanks for your vote! 👍', 'success');
+      } else {
+        showNotification(result.message, 'error');
+      }
     });
-  }
-
-  if (difficulty !== "all") {
-    filtered = filtered.filter(p => p.difficulty === difficulty);
-  }
-
-  if (needsDemo) {
-    filtered = filtered.filter(p => p.hasDemo);
-  }
-
-  if (needsReadme) {
-    filtered = filtered.filter(p => p.hasReadme);
-  }
-
-  return filtered;
+  });
 }
 
-// Handle search input with debounce
-let searchTimeout;
-function handleSearch() {
-  const searchTerm = searchInput.value.trim();
-  
-  // Show/hide clear button
+// ================= Filters =================
+function applyFilters() {
+  let filteredProjects = [...sampleProjects];
+
+  // difficulty filter
+  const difficulty = difficultyFilter.value;
+  if (difficulty !== 'all') {
+    filteredProjects = filteredProjects.filter(p => p.difficulty === difficulty);
+  }
+
+  // demo filter
+  if (hasDemoFilter.checked) {
+    filteredProjects = filteredProjects.filter(p => p.hasDemo);
+  }
+
+  // tag filter
+  if (selectedTag) {
+    filteredProjects = filteredProjects.filter(p => p.tags.includes(selectedTag));
+  }
+
+  // search filter
+  const searchTerm = searchInput.value.toLowerCase().trim();
   if (searchTerm) {
-    clearSearchBtn.style.display = "flex";
-  } else {
-    clearSearchBtn.style.display = "none";
+    filteredProjects = filteredProjects.filter(p =>
+      p.title.toLowerCase().includes(searchTerm) ||
+      p.description.toLowerCase().includes(searchTerm) ||
+      p.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+    );
   }
-  
-  // Clear previous timeout
-  clearTimeout(searchTimeout);
-  
-  // Debounce search to improve performance
-  searchTimeout = setTimeout(() => {
-    const filteredProjects = applyCurrentFilters();
-    renderProjects(filteredProjects);
-  }, 300);
+
+  // sort
+  const sortBy = sortByFilter.value;
+  filteredProjects.sort((a, b) => {
+    if (sortBy === 'popular') return b.upvotes - a.upvotes;
+    if (sortBy === 'newest') return b.id - a.id;
+    if (sortBy === 'oldest') return a.id - b.id;
+    return 0;
+  });
+
+  currentProjects = filteredProjects;
+  renderProjects(currentProjects);
 }
 
-// Clear search
-function clearSearch() {
-  searchInput.value = "";
-  clearSearchBtn.style.display = "none";
-  const filteredProjects = applyCurrentFilters();
-  renderProjects(filteredProjects);
-}
-
-// Reset filters
 function resetFilters() {
-  difficultyFilter.value = "all";
+  difficultyFilter.value = 'all';
   hasDemoFilter.checked = false;
-  hasReadmeFilter.checked = false;
-  searchInput.value = "";
-  clearSearchBtn.style.display = "none";
-  renderProjects(sampleProjects);
+  sortByFilter.value = 'popular';
+  searchInput.value = '';
+  clearSearchBtn.style.display = 'none';
+  selectedTag = null;
+
+  document.querySelectorAll('.tag-filter-btn').forEach(btn => btn.classList.remove('active'));
+
+  currentProjects = [...sampleProjects];
+  renderProjects(currentProjects);
 }
 
-// Form validation
-function validateForm() {
-  const name = document.getElementById("name").value.trim();
-  const lastname = document.getElementById("lastname").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
-  
-  if (!name || !lastname || !email || !message) {
-    alert("Please fill in all fields.");
-    return false;
-  }
+// ================= Event Listeners =================
+function setupEventListeners() {
+  applyFiltersBtn.addEventListener('click', applyFilters);
+  resetFiltersBtn.addEventListener('click', resetFilters);
 
-  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  if (!email.match(emailPattern)) {
-    alert("Please enter a valid email.");
-    return false;
-  }
+  searchInput.addEventListener('input', () => {
+    clearSearchBtn.style.display = searchInput.value ? 'block' : 'none';
+  });
 
-  // Show the overlay
-  const overlay = document.getElementById("message-overlay");
-  overlay.style.opacity = "1";
-  overlay.style.pointerEvents = "auto";
-
-  // Hide the overlay after 3 seconds
-  setTimeout(() => {
-    overlay.style.opacity = "0";
-    overlay.style.pointerEvents = "none";
-  }, 3000);
-
-  // Clear form
-  document.getElementById("contact-form").reset();
-
-  return false; // Prevent actual form submission
+  clearSearchBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    clearSearchBtn.style.display = 'none';
+    applyFilters();
+  });
 }
 
-// Make handleUpvote globally available
-window.handleUpvote = handleUpvote;
+function initializeTagFilterListener() {
+  tagFiltersContainer.addEventListener('click', (e) => {
+    if (e.target.classList.contains('tag-filter-btn')) {
+      document.querySelectorAll('.tag-filter-btn').forEach(btn => btn.classList.remove('active'));
+      if (selectedTag === e.target.dataset.tag) {
+        selectedTag = null;
+      } else {
+        selectedTag = e.target.dataset.tag;
+        e.target.classList.add('active');
+      }
+      applyFilters();
+    }
+  });
+}
 
-// Start the app
-document.addEventListener("DOMContentLoaded", init);
+// ================= Run App =================
+init();
